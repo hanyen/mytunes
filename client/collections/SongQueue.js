@@ -28,7 +28,7 @@ var SongQueue = Backbone.Collection.extend({
 
     this.on('dequeue', function() {
       this.remove(this.at(0));
-      console.log('removed');
+      //console.log('removed');
     });
     
     this.on('add', function() { new SongQueueView().render(); }, this);
