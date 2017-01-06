@@ -5,13 +5,29 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
-    debugger;
+    // listen to ended
+    // console.log('i am here');
+    // this.on('ended', function() {
+    //   console.log('PlayerView');
+    //   // create songQueue object
+    //   // new SongQueue.playFirst();
+    // }, this);
+    // this.on('ended', function() { console.log('PlayerView'); }, this);
+    // $('el').on('ended', function() { console.log('PlayerView'); });
   },
 
   setSong: function(song) {
+    // debugger;
     this.model = song;
     this.render();
   },
+
+  // event listener for tigger done in DOM node, e.g. $(appView.playerView.el).trigger('ended');
+  events: {
+    'ended': function() {
+      this.trigger('ended');
+    }  //This will fire.
+  }, 
 
   render: function() {
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
