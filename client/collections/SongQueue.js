@@ -31,8 +31,9 @@ var SongQueue = Backbone.Collection.extend({
       //console.log('removed');
     });
     
-    this.on('add', function() { new SongQueueView().render(); }, this);
-    this.on('pop', function() { new SongQueueView().render(); }, this);  
+    // We don't need this because we can just do it in SongQueueView, listening to "add"
+    // this.on('add', function() { this.trigger('added'); console.log(this);}, this);
+    this.on('pop', function() { new SongQueueView().render(); }, this);
   },
 
   playFirst: function() {
